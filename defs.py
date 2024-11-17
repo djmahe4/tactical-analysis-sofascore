@@ -56,7 +56,7 @@ def home(home_players,mid):
     plt.gca().invert_yaxis()
 
     ax.set_title('Home Team')
-    plt.legend(loc='best')
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     #plt.show()
     st.pyplot(fig)
 def away(away_players,mid):
