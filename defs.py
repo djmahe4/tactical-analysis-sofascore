@@ -8,6 +8,7 @@ colors = ['blue', 'red', 'cyan', 'magenta', 'yellow',  'maroon', 'olive', 'aqua'
 def most_frequent_positions(pid,mid, max_clusters=3):
     # ... (rest of the function, including frequency map creation and sorting)
     response = requests.get(f"https://www.sofascore.com/api/v1/event/{mid}/player/{pid}/heatmap")
+    st.write(respnse.text)
     heatmap_data = response.json()["heatmap"]
     print(heatmap_data)
     frequency_map = {}
