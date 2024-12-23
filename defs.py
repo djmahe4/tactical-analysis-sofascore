@@ -1,5 +1,6 @@
 import requests
 import datetime
+import random
 import matplotlib.pyplot as plt
 from mplsoccer import Pitch
 import streamlit as st
