@@ -3,6 +3,7 @@ import datetime
 import matplotlib.pyplot as plt
 from mplsoccer import Pitch
 import streamlit as st
+colors = ['blue', 'red', 'cyan', 'magenta', 'yellow',  'maroon', 'olive', 'aqua', 'teal', 'navy', 'fuchsia', 'purple', 'orange', 'gold', 'pink', 'brown', 'coral', 'indigo', 'khaki', 'plum', 'salmon', 'violet', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray', 'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dodgerblue', 'firebrick', 'forestgreen', 'goldenrod', 'hotpink', 'indianred', 'midnightblue', 'orangered', 'orchid', 'palevioletred', 'peru', 'rosybrown', 'royalblue', 'saddlebrown', 'sandybrown', 'seagreen', 'sienna', 'skyblue', 'slateblue', 'slategray', 'steelblue', 'tan', 'thistle', 'tomato', 'turquoise', 'wheat', 'yellowgreen']
 def most_frequent_positions(pid,mid, max_clusters=3):
     # ... (rest of the function, including frequency map creation and sorting)
     response = requests.get(f"https://www.sofascore.com/api/v1/event/{mid}/player/{pid}/heatmap")
@@ -42,13 +43,14 @@ def home(home_players,mid):
 
     # Plot player positions with varying marker sizes
     for player in home_players:
-        ax.scatter(player['averageX']* 1.2, player['averageY']* 0.8, s=player['pointsCount'] * 10, alpha=0.7,label=player['player']['shortName'])
+        random_color = random.choice(colors)
+        ax.scatter(player['averageX']* 1.2, player['averageY']* 0.8, s=player['pointsCount'] * 10, alpha=0.7,color=random_color)
         ax.text(player['averageX']* 1.2, player['averageY']* 0.8, player['player']['jerseyNumber'], ha='center', va='center', color='white', fontsize=12, fontweight='bold')
-        print(mid)
-        movement=most_frequent_positions(player['player']['id'],mid)
+        movement=most_frequent_positions(player['player']['id'],12744977)
         j=10
         for i in movement:
-            pitch.arrows(player['averageX']* 1.2, player['averageY']* 0.8, i[0][0]* 1.2, i[0][1]* 0.8, ax=ax,color='red',linewidth=i[1]*0.02,capstyle='butt',  # capstyle round so the glow extends past the line
+          j+=1
+          pitch.arrows(player['averageX']* 1.2, player['averageY']* 0.8, i[0][0]* 1.2, i[0][1]* 0.8, ax=ax,color=random_color,linewidth=i[1]*0.02,capstyle='butt',  # capstyle round so the glow extends past the line
                     alpha=i[1]*0.02)
 
 
