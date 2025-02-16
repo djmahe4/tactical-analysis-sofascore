@@ -13,7 +13,7 @@ from datetime import datetime
 import http.client, json
 from urllib.parse import urlparse
 import os
-os.environ["PATH"] += os.pathsep + r'C:\ffmpeg-master-latest-win64-gpl\bin'
+#os.environ["PATH"] += os.pathsep + r'C:\ffmpeg-master-latest-win64-gpl\bin'
 
 def get_time():
 # Get the current time in GMT
